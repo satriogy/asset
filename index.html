@@ -144,142 +144,11 @@
             from { transform: translateX(100%); opacity: 0; }
             to { transform: translateX(0); opacity: 1; }
         }
-
-        .login-container {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
-        .login-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 1rem;
-            width: 90%;
-            max-width: 400px;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: white;
-            z-index: 999;
-            padding: 1rem;
-        }
-
-        .mobile-menu.show {
-            display: block;
-        }
-
-        @media (max-width: 768px) {
-            .mobile-menu {
-                display: none;
-            }
-            
-            .mobile-menu.show {
-                display: block;
-            }
-        }
     </style>
 </head>
 <body class="bg-gray-50">
-    <!-- Login Page -->
-    <div id="login-page" class="login-container">
-        <div class="login-card">
-            <div class="text-center mb-8">
-                <div class="w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i data-lucide="package" class="w-8 h-8 text-white"></i>
-                </div>
-                <h1 class="text-2xl font-bold text-gray-900">Asset Management</h1>
-                <p class="text-gray-600 mt-2">Sign in to your account</p>
-            </div>
-            
-            <form id="login-form" onsubmit="handleLogin(event)">
-                <div class="form-group">
-                    <label for="login-email">Email</label>
-                    <input type="email" id="login-email" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
-                </div>
-                
-                <div class="form-group">
-                    <label for="login-password">Password</label>
-                    <input type="password" id="login-password" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
-                </div>
-                
-                <button type="submit" class="btn-primary text-white px-4 py-2 rounded-lg w-full">Sign In</button>
-            </form>
-            
-            <div class="mt-6 text-center">
-                <p class="text-sm text-gray-600">
-                    Don't have an account? 
-                    <button onclick="showRegisterForm()" class="text-indigo-600 hover:text-indigo-800 font-medium">Sign up</button>
-                </p>
-            </div>
-            
-            <div class="mt-4 text-center">
-                <p class="text-xs text-gray-500">Demo: admin@company.com / admin123</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Register Form (Hidden by default) -->
-    <div id="register-form" class="hidden">
-        <div class="text-center mb-8">
-            <h2 class="text-2xl font-bold text-gray-900">Create Account</h2>
-            <p class="text-gray-600 mt-2">Sign up to get started</p>
-        </div>
-        
-        <form onsubmit="handleRegister(event)">
-            <div class="form-group">
-                <label for="register-name">Full Name</label>
-                <input type="text" id="register-name" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
-            </div>
-            
-            <div class="form-group">
-                <label for="register-email">Email</label>
-                <input type="email" id="register-email" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
-            </div>
-            
-            <div class="form-group">
-                <label for="register-password">Password</label>
-                <input type="password" id="register-password" required minlength="6" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
-            </div>
-            
-            <div class="form-group">
-                <label for="register-role">Role</label>
-                <select id="register-role" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
-                    <option value="">Select Role</option>
-                    <option value="Administrator">Administrator</option>
-                    <option value="Manager">Manager</option>
-                    <option value="Staff">Staff</option>
-                    <option value="Viewer">Viewer</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="register-department">Department</label>
-                <input type="text" id="register-department" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
-            </div>
-            
-            <button type="submit" class="btn-primary text-white px-4 py-2 rounded-lg w-full">Sign Up</button>
-        </form>
-        
-        <div class="mt-6 text-center">
-            <p class="text-sm text-gray-600">
-                Already have an account? 
-                <button onclick="showLoginForm()" class="text-indigo-600 hover:text-indigo-800 font-medium">Sign in</button>
-            </p>
-        </div>
-    </div>
-
-    <!-- Main App Container -->
-    <div id="app" class="min-h-screen flex flex-col hidden">
+    <!-- App Container -->
+    <div id="app" class="min-h-screen flex flex-col">
         <!-- Header -->
         <header class="bg-white shadow-sm border-b border-gray-200">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -288,18 +157,14 @@
                         <i data-lucide="package" class="w-8 h-8 text-indigo-600 mr-3"></i>
                         <h1 class="text-xl font-bold text-gray-900">Asset Management System</h1>
                     </div>
-                    
-                    <!-- Desktop Navigation -->
                     <nav class="hidden md:flex space-x-8">
                         <button onclick="showPage('dashboard')" class="nav-btn text-indigo-600 px-3 py-2 text-sm font-medium">Dashboard</button>
                         <button onclick="showPage('assets')" class="nav-btn text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium">Assets</button>
                         <button onclick="showPage('maintenance')" class="nav-btn text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium">Maintenance</button>
                         <button onclick="showPage('reports')" class="nav-btn text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium">Reports</button>
                         <button onclick="showPage('users')" class="nav-btn text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium">Users</button>
-                        <button onclick="showPage('licenses')" class="nav-btn text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium">Licenses</button>
                         <button onclick="showPage('settings')" class="nav-btn text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium">Settings</button>
                     </nav>
-                    
                     <div class="flex items-center space-x-4">
                         <button onclick="toggleDarkMode()" class="p-2 rounded-md hover:bg-gray-100">
                             <i data-lucide="moon" class="w-5 h-5 text-gray-600"></i>
@@ -312,47 +177,22 @@
                         </div>
                         <div class="flex items-center space-x-3">
                             <div class="w-8 h-8 bg-indigo-600 rounded-full flex items-center justify-center">
-                                <span id="user-initials" class="text-white text-sm font-medium">A</span>
+                                <span class="text-white text-sm font-medium">A</span>
                             </div>
-                            <span id="user-name" class="text-sm font-medium text-gray-700">Admin User</span>
-                            <button onclick="handleLogout()" class="text-red-600 hover:text-red-800 text-sm">Logout</button>
+                            <span class="text-sm font-medium text-gray-700">Admin User</span>
                         </div>
-                        
-                        <!-- Mobile Menu Button -->
-                        <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-md hover:bg-gray-100">
-                            <i data-lucide="menu" class="w-5 h-5 text-gray-600"></i>
-                        </button>
                     </div>
                 </div>
             </div>
         </header>
-
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="mobile-menu">
-            <div class="flex justify-between items-center mb-6">
-                <h2 class="text-xl font-bold">Menu</h2>
-                <button onclick="toggleMobileMenu()" class="p-2 rounded-md hover:bg-gray-100">
-                    <i data-lucide="x" class="w-5 h-5 text-gray-600"></i>
-                </button>
-            </div>
-            <nav class="space-y-2">
-                <button onclick="showPage('dashboard'); toggleMobileMenu();" class="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">Dashboard</button>
-                <button onclick="showPage('assets'); toggleMobileMenu();" class="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">Assets</button>
-                <button onclick="showPage('maintenance'); toggleMobileMenu();" class="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">Maintenance</button>
-                <button onclick="showPage('reports'); toggleMobileMenu();" class="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">Reports</button>
-                <button onclick="showPage('users'); toggleMobileMenu();" class="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">Users</button>
-                <button onclick="showPage('licenses'); toggleMobileMenu();" class="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">Licenses</button>
-                <button onclick="showPage('settings'); toggleMobileMenu();" class="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 rounded">Settings</button>
-            </nav>
-        </div>
 
         <!-- Main Content -->
         <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <!-- Dashboard Page -->
             <div id="dashboard-page" class="page fade-in">
                 <div class="mb-8">
-                    <h2 class="text-3xl font-bold text-gray-900">Dashboard</h2>
-                    <p class="text-gray-600 mt-2">Selamat datang kembali! Berikut overview sistem manajemen aset Anda.</p>
+                    <h2 class="text-2xl font-bold text-gray-900">Dashboard</h2>
+                    <p class="text-gray-600">Overview of your asset management system</p>
                 </div>
 
                 <!-- KPI Cards -->
@@ -362,7 +202,7 @@
                             <div>
                                 <p class="text-white/80 text-sm">Total Assets</p>
                                 <p class="text-3xl font-bold mt-1" id="total-assets">0</p>
-                                <p class="text-white/70 text-sm mt-2">+12% dari bulan lalu</p>
+                                <p class="text-white/70 text-sm mt-2">+12% from last month</p>
                             </div>
                             <i data-lucide="package" class="w-12 h-12 text-white/50"></i>
                         </div>
@@ -384,7 +224,7 @@
                             <div>
                                 <p class="text-white/80 text-sm">Maintenance</p>
                                 <p class="text-3xl font-bold mt-1" id="maintenance-count">0</p>
-                                <p class="text-white/70 text-sm mt-2">Terjadwal bulan ini</p>
+                                <p class="text-white/70 text-sm mt-2">Scheduled this month</p>
                             </div>
                             <i data-lucide="wrench" class="w-12 h-12 text-white/50"></i>
                         </div>
@@ -395,43 +235,24 @@
                             <div>
                                 <p class="text-white/80 text-sm">Health Score</p>
                                 <p class="text-3xl font-bold mt-1">94%</p>
-                                <p class="text-white/70 text-sm mt-2">Kondisi excellent</p>
+                                <p class="text-white/70 text-sm mt-2">Excellent condition</p>
                             </div>
                             <i data-lucide="trending-up" class="w-12 h-12 text-white/50"></i>
                         </div>
                     </div>
                 </div>
 
-                <!-- Quick Actions -->
-                <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-8">
-                    <h3 class="text-lg font-semibold mb-4">Quick Actions</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <button onclick="showPage('assets'); setTimeout(() => openAddAssetModal(), 100);" class="flex items-center justify-center space-x-2 px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
-                            <i data-lucide="plus" class="w-5 h-5"></i>
-                            <span>Tambah Aset Baru</span>
-                        </button>
-                        <button onclick="showPage('maintenance'); setTimeout(() => openScheduleMaintenanceModal(), 100);" class="flex items-center justify-center space-x-2 px-4 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700">
-                            <i data-lucide="calendar" class="w-5 h-5"></i>
-                            <span>Jadwalkan Maintenance</span>
-                        </button>
-                        <button onclick="showPage('reports');" class="flex items-center justify-center space-x-2 px-4 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700">
-                            <i data-lucide="file-text" class="w-5 h-5"></i>
-                            <span>Generate Laporan</span>
-                        </button>
-                    </div>
-                </div>
-
                 <!-- Charts Row -->
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
                     <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-                        <h3 class="text-lg font-semibold mb-4">Distribusi Aset</h3>
+                        <h3 class="text-lg font-semibold mb-4">Asset Distribution</h3>
                         <div class="chart-container">
                             <canvas id="assetChart"></canvas>
                         </div>
                     </div>
                     
                     <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-                        <h3 class="text-lg font-semibold mb-4">Overview Maintenance</h3>
+                        <h3 class="text-lg font-semibold mb-4">Maintenance Overview</h3>
                         <div class="chart-container">
                             <canvas id="maintenanceChart"></canvas>
                         </div>
@@ -441,7 +262,7 @@
                 <!-- Recent Activity -->
                 <div class="bg-white rounded-lg shadow-sm border border-gray-200">
                     <div class="p-6 border-b border-gray-200">
-                        <h3 class="text-lg font-semibold">Aktivitas Terbaru</h3>
+                        <h3 class="text-lg font-semibold">Recent Activity</h3>
                     </div>
                     <div class="p-6 space-y-4 max-h-96 overflow-y-auto scrollbar-thin" id="recent-activity">
                         <!-- Activity items will be dynamically added here -->
@@ -454,7 +275,7 @@
                 <div class="mb-8 flex justify-between items-center">
                     <div>
                         <h2 class="text-2xl font-bold text-gray-900">Asset Management</h2>
-                        <p class="text-gray-600">Kelola dan lacak semua aset perusahaan</p>
+                        <p class="text-gray-600">Manage and track all company assets</p>
                     </div>
                     <button onclick="openAddAssetModal()" class="btn-primary text-white px-4 py-2 rounded-lg hover:opacity-90 transition-opacity flex items-center space-x-2">
                         <i data-lucide="plus" class="w-4 h-4"></i>
@@ -514,84 +335,260 @@
                 </div>
             </div>
 
-            <!-- Licenses Page -->
-            <div id="licenses-page" class="page hidden">
+            <!-- Maintenance Page -->
+            <div id="maintenance-page" class="page hidden">
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900">Maintenance Management</h2>
+                    <p class="text-gray-600">Schedule and track asset maintenance</p>
+                </div>
+
+                <!-- View Toggle -->
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200 mb-6">
+                    <div class="flex justify-between items-center">
+                        <div class="flex space-x-2">
+                            <button onclick="setMaintenanceView('calendar')" class="maintenance-view-btn px-4 py-2 bg-indigo-600 text-white rounded-lg">Calendar</button>
+                            <button onclick="setMaintenanceView('list')" class="maintenance-view-btn px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300">List View</button>
+                        </div>
+                        <button onclick="openScheduleMaintenanceModal()" class="btn-primary text-white px-4 py-2 rounded-lg hover:opacity-90 transition-opacity flex items-center space-x-2">
+                            <i data-lucide="plus" class="w-4 h-4"></i>
+                            <span>Schedule Maintenance</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Calendar View -->
+                <div id="maintenance-calendar" class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-lg font-semibold">February 2024</h3>
+                        <div class="flex space-x-2">
+                            <button onclick="changeMonth(-1)" class="p-2 hover:bg-gray-100 rounded-lg">
+                                <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                            </button>
+                            <button onclick="changeMonth(1)" class="p-2 hover:bg-gray-100 rounded-lg">
+                                <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="calendar-grid text-center" id="calendar-grid">
+                        <!-- Calendar will be generated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- List View (Hidden by default) -->
+                <div id="maintenance-list" class="hidden">
+                    <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+                        <div class="divide-y divide-gray-200" id="maintenance-list-items">
+                            <!-- Maintenance items will be dynamically added here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reports Page -->
+            <div id="reports-page" class="page hidden">
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900">Reports & Analytics</h2>
+                    <p class="text-gray-600">Generate insights and export data</p>
+                </div>
+
+                <!-- Report Types -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 card-hover cursor-pointer">
+                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                            <i data-lucide="file-text" class="w-6 h-6 text-blue-600"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">Asset Inventory Report</h3>
+                        <p class="text-gray-600 text-sm mb-4">Complete list of all assets with details</p>
+                        <button onclick="generateReport('inventory')" class="text-indigo-600 hover:text-indigo-800 font-medium text-sm">Generate Report →</button>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 card-hover cursor-pointer">
+                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                            <i data-lucide="trending-up" class="w-6 h-6 text-green-600"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">Depreciation Report</h3>
+                        <p class="text-gray-600 text-sm mb-4">Asset value depreciation over time</p>
+                        <button onclick="generateReport('depreciation')" class="text-indigo-600 hover:text-indigo-800 font-medium text-sm">Generate Report →</button>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 card-hover cursor-pointer">
+                        <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                            <i data-lucide="wrench" class="w-6 h-6 text-purple-600"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">Maintenance Report</h3>
+                        <p class="text-gray-600 text-sm mb-4">Maintenance history and schedules</p>
+                        <button onclick="generateReport('maintenance')" class="text-indigo-600 hover:text-indigo-800 font-medium text-sm">Generate Report →</button>
+                    </div>
+                </div>
+
+                <!-- Charts -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                        <h3 class="text-lg font-semibold mb-4">Asset Value by Category</h3>
+                        <div class="chart-container">
+                            <canvas id="valueChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                        <h3 class="text-lg font-semibold mb-4">Monthly Maintenance Costs</h3>
+                        <div class="chart-container">
+                            <canvas id="costChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Users Page -->
+            <div id="users-page" class="page hidden">
                 <div class="mb-8 flex justify-between items-center">
                     <div>
-                        <h2 class="text-2xl font-bold text-gray-900">License Management</h2>
-                        <p class="text-gray-600">Kelola lisensi software dan subscription</p>
+                        <h2 class="text-2xl font-bold text-gray-900">User Management</h2>
+                        <p class="text-gray-600">Manage user access and permissions</p>
                     </div>
-                    <button onclick="openAddLicenseModal()" class="btn-primary text-white px-4 py-2 rounded-lg hover:opacity-90 transition-opacity flex items-center space-x-2">
-                        <i data-lucide="plus" class="w-4 h-4"></i>
-                        <span>Add License</span>
+                    <button onclick="openAddUserModal()" class="btn-primary text-white px-4 py-2 rounded-lg hover:opacity-90 transition-opacity flex items-center space-x-2">
+                        <i data-lucide="user-plus" class="w-4 h-4"></i>
+                        <span>Add User</span>
                     </button>
                 </div>
 
-                <!-- License Stats -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-                        <div class="flex items-center">
-                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
-                                <i data-lucide="shield" class="w-6 h-6 text-blue-600"></i>
-                            </div>
-                            <div>
-                                <p class="text-sm text-gray-600">Total Licenses</p>
-                                <p class="text-2xl font-bold text-gray-900" id="total-licenses">0</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-                        <div class="flex items-center">
-                            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
-                                <i data-lucide="check-circle" class="w-6 h-6 text-green-600"></i>
-                            </div>
-                            <div>
-                                <p class="text-sm text-gray-600">Active</p>
-                                <p class="text-2xl font-bold text-gray-900" id="active-licenses">0</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-                        <div class="flex items-center">
-                            <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mr-4">
-                                <i data-lucide="alert-circle" class="w-6 h-6 text-red-600"></i>
-                            </div>
-                            <div>
-                                <p class="text-sm text-gray-600">Expiring Soon</p>
-                                <p class="text-2xl font-bold text-gray-900" id="expiring-licenses">0</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Licenses Table -->
+                <!-- Users Table -->
                 <div class="bg-white rounded-lg shadow-sm border border-gray-200">
                     <div class="overflow-x-auto">
                         <table class="w-full">
                             <thead class="bg-gray-50 border-b border-gray-200">
                                 <tr>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Software</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">License Key</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Seats</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Used</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Expiry Date</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">User</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Department</th>
                                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Last Active</th>
                                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
                                 </tr>
                             </thead>
-                            <tbody class="divide-y divide-gray-200" id="licenses-table-body">
-                                <!-- License rows will be dynamically added here -->
+                            <tbody class="divide-y divide-gray-200" id="users-table-body">
+                                <!-- User rows will be dynamically added here -->
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
 
-            <!-- Other pages (Maintenance, Reports, Users, Settings) remain the same -->
-            <!-- ... (keeping the existing code for other pages) ... -->
+            <!-- Settings Page -->
+            <div id="settings-page" class="page hidden">
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900">Settings</h2>
+                    <p class="text-gray-600">Configure system preferences and settings</p>
+                </div>
+
+                <!-- Settings Tabs -->
+                <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+                    <div class="border-b border-gray-200">
+                        <nav class="flex space-x-8 px-6">
+                            <button onclick="setSettingsTab('general')" class="settings-tab py-4 border-b-2 border-indigo-500 text-indigo-600 font-medium">General</button>
+                            <button onclick="setSettingsTab('notifications')" class="settings-tab py-4 border-b-2 border-transparent text-gray-500 hover:text-gray-700">Notifications</button>
+                            <button onclick="setSettingsTab('security')" class="settings-tab py-4 border-b-2 border-transparent text-gray-500 hover:text-gray-700">Security</button>
+                            <button onclick="setSettingsTab('backup')" class="settings-tab py-4 border-b-2 border-transparent text-gray-500 hover:text-gray-700">Backup</button>
+                            <button onclick="setSettingsTab('api')" class="settings-tab py-4 border-b-2 border-transparent text-gray-500 hover:text-gray-700">API</button>
+                        </nav>
+                    </div>
+
+                    <!-- General Settings -->
+                    <div id="general-settings" class="settings-content p-6">
+                        <div class="space-y-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Company Name</label>
+                                <input type="text" id="company-name" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Default Currency</label>
+                                <select id="default-currency" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
+                                    <option value="IDR">Indonesian Rupiah (IDR)</option>
+                                    <option value="USD">US Dollar (USD)</option>
+                                    <option value="EUR">Euro (EUR)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Date Format</label>
+                                <select id="date-format" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
+                                    <option value="DD/MM/YYYY">DD/MM/YYYY</option>
+                                    <option value="MM/DD/YYYY">MM/DD/YYYY</option>
+                                    <option value="YYYY-MM-DD">YYYY-MM-DD</option>
+                                </select>
+                            </div>
+                            <button onclick="saveSettings()" class="btn-primary text-white px-4 py-2 rounded-lg">Save Settings</button>
+                        </div>
+                    </div>
+
+                    <!-- Other settings tabs (hidden by default) -->
+                    <div id="notifications-settings" class="settings-content p-6 hidden">
+                        <h3 class="text-lg font-medium mb-4">Notification Preferences</h3>
+                        <div class="space-y-4">
+                            <label class="flex items-center">
+                                <input type="checkbox" id="notify-maintenance" checked class="mr-3">
+                                <span>Email notifications for maintenance due</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" id="notify-warranty" checked class="mr-3">
+                                <span>Email notifications for warranty expiry</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" id="notify-sms" class="mr-3">
+                                <span>SMS notifications for urgent issues</span>
+                            </label>
+                        </div>
+                        <button onclick="saveSettings()" class="btn-primary text-white px-4 py-2 rounded-lg mt-4">Save Settings</button>
+                    </div>
+
+                    <div id="security-settings" class="settings-content p-6 hidden">
+                        <h3 class="text-lg font-medium mb-4">Security Settings</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Session Timeout (minutes)</label>
+                                <input type="number" id="session-timeout" value="30" class="w-full px-3 py-2 border border-gray-300 rounded-lg">
+                            </div>
+                            <div>
+                                <label class="flex items-center">
+                                    <input type="checkbox" id="require-2fa" checked class="mr-3">
+                                    <span>Require two-factor authentication</span>
+                                </label>
+                            </div>
+                        </div>
+                        <button onclick="saveSettings()" class="btn-primary text-white px-4 py-2 rounded-lg mt-4">Save Settings</button>
+                    </div>
+
+                    <div id="backup-settings" class="settings-content p-6 hidden">
+                        <h3 class="text-lg font-medium mb-4">Backup Configuration</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Backup Frequency</label>
+                                <select id="backup-frequency" class="w-full px-3 py-2 border border-gray-300 rounded-lg">
+                                    <option value="daily">Daily</option>
+                                    <option value="weekly">Weekly</option>
+                                    <option value="monthly">Monthly</option>
+                                </select>
+                            </div>
+                            <button onclick="backupData()" class="btn-primary text-white px-4 py-2 rounded-lg">Backup Now</button>
+                            <button onclick="restoreData()" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">Restore Data</button>
+                        </div>
+                    </div>
+
+                    <div id="api-settings" class="settings-content p-6 hidden">
+                        <h3 class="text-lg font-medium mb-4">API Configuration</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">API Key</label>
+                                <div class="flex">
+                                    <input type="password" id="api-key" value="sk-1234567890abcdef" class="flex-1 px-3 py-2 border border-gray-300 rounded-l-lg">
+                                    <button onclick="toggleApiKeyVisibility()" class="px-4 py-2 bg-gray-200 border border-l-0 border-gray-300 rounded-r-lg hover:bg-gray-300">Show</button>
+                                </div>
+                            </div>
+                            <button onclick="generateApiKey()" class="btn-primary text-white px-4 py-2 rounded-lg">Generate New Key</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
 
         <!-- Footer -->
@@ -613,15 +610,13 @@
     <div id="add-asset-modal" class="modal">
         <div class="modal-content">
             <div class="flex justify-between items-center mb-6">
-                <h3 class="text-xl font-bold" id="asset-modal-title">Add New Asset</h3>
+                <h3 class="text-xl font-bold">Add New Asset</h3>
                 <button onclick="closeModal('add-asset-modal')" class="text-gray-500 hover:text-gray-700">
                     <i data-lucide="x" class="w-6 h-6"></i>
                 </button>
             </div>
             
             <form id="add-asset-form" onsubmit="saveAsset(event)">
-                <input type="hidden" id="asset-id" name="asset-id">
-                
                 <div class="form-group">
                     <label for="asset-name">Asset Name *</label>
                     <input type="text" id="asset-name" required class="w-full px-3 py-2 border border-gray-300 rounded-lg">
@@ -668,75 +663,110 @@
                 </div>
                 
                 <div class="flex space-x-3">
-                    <button type="submit" class="btn-primary text-white px-4 py-2 rounded-lg flex-1" id="asset-submit-btn">Save Asset</button>
+                    <button type="submit" class="btn-primary text-white px-4 py-2 rounded-lg flex-1">Save Asset</button>
                     <button type="button" onclick="closeModal('add-asset-modal')" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 flex-1">Cancel</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- Add License Modal -->
-    <div id="add-license-modal" class="modal">
+    <!-- Add User Modal -->
+    <div id="add-user-modal" class="modal">
         <div class="modal-content">
             <div class="flex justify-between items-center mb-6">
-                <h3 class="text-xl font-bold" id="license-modal-title">Add New License</h3>
-                <button onclick="closeModal('add-license-modal')" class="text-gray-500 hover:text-gray-700">
+                <h3 class="text-xl font-bold">Add New User</h3>
+                <button onclick="closeModal('add-user-modal')" class="text-gray-500 hover:text-gray-700">
                     <i data-lucide="x" class="w-6 h-6"></i>
                 </button>
             </div>
             
-            <form id="add-license-form" onsubmit="saveLicense(event)">
-                <input type="hidden" id="license-id" name="license-id">
-                
+            <form id="add-user-form" onsubmit="saveUser(event)">
                 <div class="form-group">
-                    <label for="license-software">Software Name *</label>
-                    <input type="text" id="license-software" required class="w-full px-3 py-2 border border-gray-300 rounded-lg">
+                    <label for="user-name">Full Name *</label>
+                    <input type="text" id="user-name" required class="w-full px-3 py-2 border border-gray-300 rounded-lg">
                 </div>
                 
                 <div class="form-group">
-                    <label for="license-key">License Key *</label>
-                    <input type="text" id="license-key" required class="w-full px-3 py-2 border border-gray-300 rounded-lg">
+                    <label for="user-email">Email *</label>
+                    <input type="email" id="user-email" required class="w-full px-3 py-2 border border-gray-300 rounded-lg">
                 </div>
                 
                 <div class="form-group">
-                    <label for="license-type">License Type *</label>
-                    <select id="license-type" required class="w-full px-3 py-2 border border-gray-300 rounded-lg">
-                        <option value="">Select Type</option>
-                        <option value="Perpetual">Perpetual</option>
-                        <option value="Subscription">Subscription</option>
-                        <option value="Trial">Trial</option>
-                        <option value="Open Source">Open Source</option>
+                    <label for="user-role">Role *</label>
+                    <select id="user-role" required class="w-full px-3 py-2 border border-gray-300 rounded-lg">
+                        <option value="">Select Role</option>
+                        <option value="Administrator">Administrator</option>
+                        <option value="Manager">Manager</option>
+                        <option value="Staff">Staff</option>
+                        <option value="Viewer">Viewer</option>
                     </select>
                 </div>
                 
                 <div class="form-group">
-                    <label for="license-seats">Number of Seats *</label>
-                    <input type="number" id="license-seats" required min="1" class="w-full px-3 py-2 border border-gray-300 rounded-lg">
-                </div>
-                
-                <div class="form-group">
-                    <label for="license-used">Seats Used</label>
-                    <input type="number" id="license-used" min="0" class="w-full px-3 py-2 border border-gray-300 rounded-lg">
-                </div>
-                
-                <div class="form-group">
-                    <label for="license-expiry">Expiry Date</label>
-                    <input type="date" id="license-expiry" class="w-full px-3 py-2 border border-gray-300 rounded-lg">
-                </div>
-                
-                <div class="form-group">
-                    <label for="license-vendor">Vendor</label>
-                    <input type="text" id="license-vendor" class="w-full px-3 py-2 border border-gray-300 rounded-lg">
-                </div>
-                
-                <div class="form-group">
-                    <label for="license-description">Description</label>
-                    <textarea id="license-description" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-lg"></textarea>
+                    <label for="user-department">Department *</label>
+                    <input type="text" id="user-department" required class="w-full px-3 py-2 border border-gray-300 rounded-lg">
                 </div>
                 
                 <div class="flex space-x-3">
-                    <button type="submit" class="btn-primary text-white px-4 py-2 rounded-lg flex-1" id="license-submit-btn">Save License</button>
-                    <button type="button" onclick="closeModal('add-license-modal')" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 flex-1">Cancel</button>
+                    <button type="submit" class="btn-primary text-white px-4 py-2 rounded-lg flex-1">Save User</button>
+                    <button type="button" onclick="closeModal('add-user-modal')" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 flex-1">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Schedule Maintenance Modal -->
+    <div id="schedule-maintenance-modal" class="modal">
+        <div class="modal-content">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold">Schedule Maintenance</h3>
+                <button onclick="closeModal('schedule-maintenance-modal')" class="text-gray-500 hover:text-gray-700">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            
+            <form id="schedule-maintenance-form" onsubmit="saveMaintenance(event)">
+                <div class="form-group">
+                    <label for="maintenance-title">Title *</label>
+                    <input type="text" id="maintenance-title" required class="w-full px-3 py-2 border border-gray-300 rounded-lg">
+                </div>
+                
+                <div class="form-group">
+                    <label for="maintenance-asset">Asset *</label>
+                    <select id="maintenance-asset" required class="w-full px-3 py-2 border border-gray-300 rounded-lg">
+                        <option value="">Select Asset</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="maintenance-date">Date *</label>
+                    <input type="date" id="maintenance-date" required class="w-full px-3 py-2 border border-gray-300 rounded-lg">
+                </div>
+                
+                <div class="form-group">
+                    <label for="maintenance-time">Time *</label>
+                    <input type="time" id="maintenance-time" required class="w-full px-3 py-2 border border-gray-300 rounded-lg">
+                </div>
+                
+                <div class="form-group">
+                    <label for="maintenance-type">Type *</label>
+                    <select id="maintenance-type" required class="w-full px-3 py-2 border border-gray-300 rounded-lg">
+                        <option value="">Select Type</option>
+                        <option value="Preventive">Preventive</option>
+                        <option value="Corrective">Corrective</option>
+                        <option value="Emergency">Emergency</option>
+                        <option value="Inspection">Inspection</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="maintenance-description">Description</label>
+                    <textarea id="maintenance-description" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-lg"></textarea>
+                </div>
+                
+                <div class="flex space-x-3">
+                    <button type="submit" class="btn-primary text-white px-4 py-2 rounded-lg flex-1">Schedule Maintenance</button>
+                    <button type="button" onclick="closeModal('schedule-maintenance-modal')" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 flex-1">Cancel</button>
                 </div>
             </form>
         </div>
@@ -745,6 +775,16 @@
     <!-- Toast Notification -->
     <div id="toast" class="toast">
         <span id="toast-message"></span>
+    </div>
+
+    <!-- Notification Panel -->
+    <div id="notification-panel" class="fixed top-16 right-4 w-80 bg-white rounded-lg shadow-lg border border-gray-200 hidden z-50">
+        <div class="p-4 border-b border-gray-200">
+            <h3 class="font-semibold">Notifications</h3>
+        </div>
+        <div class="max-h-96 overflow-y-auto" id="notification-list">
+            <!-- Notifications will be dynamically added here -->
+        </div>
     </div>
 
     <script>
@@ -764,8 +804,8 @@
                 if (!localStorage.getItem('users')) {
                     localStorage.setItem('users', JSON.stringify(this.getSampleUsers()));
                 }
-                if (!localStorage.getItem('licenses')) {
-                    localStorage.setItem('licenses', JSON.stringify(this.getSampleLicenses()));
+                if (!localStorage.getItem('maintenance')) {
+                    localStorage.setItem('maintenance', JSON.stringify(this.getSampleMaintenance()));
                 }
                 if (!localStorage.getItem('activities')) {
                     localStorage.setItem('activities', JSON.stringify([]));
@@ -816,7 +856,6 @@
                         id: 'USR001',
                         name: 'Admin User',
                         email: 'admin@company.com',
-                        password: 'admin123',
                         role: 'Administrator',
                         department: 'IT',
                         status: 'Active',
@@ -826,7 +865,6 @@
                         id: 'USR002',
                         name: 'John Manager',
                         email: 'john@company.com',
-                        password: 'manager123',
                         role: 'Manager',
                         department: 'Operations',
                         status: 'Active',
@@ -835,29 +873,18 @@
                 ];
             }
 
-            getSampleLicenses() {
+            getSampleMaintenance() {
                 return [
                     {
-                        id: 'LIC001',
-                        software: 'Microsoft Office 365',
-                        licenseKey: 'XXXX-XXXX-XXXX-XXXX',
-                        type: 'Subscription',
-                        seats: 50,
-                        used: 35,
-                        expiryDate: '2024-12-31',
-                        vendor: 'Microsoft',
-                        description: 'Productivity suite for all employees'
-                    },
-                    {
-                        id: 'LIC002',
-                        software: 'Adobe Creative Cloud',
-                        licenseKey: 'YYYY-YYYY-YYYY-YYYY',
-                        type: 'Subscription',
-                        seats: 10,
-                        used: 8,
-                        expiryDate: '2024-06-30',
-                        vendor: 'Adobe',
-                        description: 'Design software for creative team'
+                        id: 'MNT001',
+                        title: 'Server Room HVAC Maintenance',
+                        assetId: 'AST001',
+                        assetName: 'Laptop Dell XPS 15',
+                        date: '2024-02-15',
+                        time: '14:00',
+                        type: 'Preventive',
+                        status: 'Scheduled',
+                        description: 'Quarterly inspection and cleaning'
                     }
                 ];
             }
@@ -866,29 +893,14 @@
                 return {
                     companyName: 'PT. Asset Management Indonesia',
                     defaultCurrency: 'IDR',
-                    dateFormat: 'DD/MM/YYYY'
+                    dateFormat: 'DD/MM/YYYY',
+                    notifyMaintenance: true,
+                    notifyWarranty: true,
+                    notifySms: false,
+                    sessionTimeout: 30,
+                    require2FA: true,
+                    backupFrequency: 'weekly'
                 };
-            }
-
-            // Users
-            getUsers() {
-                return JSON.parse(localStorage.getItem('users') || '[]');
-            }
-
-            saveUser(user) {
-                const users = this.getUsers();
-                user.id = user.id || 'USR' + Date.now().toString().slice(-6);
-                user.createdAt = user.createdAt || new Date().toISOString();
-                
-                const existingIndex = users.findIndex(u => u.id === user.id);
-                if (existingIndex >= 0) {
-                    users[existingIndex] = { ...users[existingIndex], ...user, updatedAt: new Date().toISOString() };
-                } else {
-                    users.push(user);
-                }
-                
-                localStorage.setItem('users', JSON.stringify(users));
-                return user;
             }
 
             // Assets
@@ -921,34 +933,56 @@
                 this.addActivity(`Asset ${asset.name} deleted`, 'asset');
             }
 
-            // Licenses
-            getLicenses() {
-                return JSON.parse(localStorage.getItem('licenses') || '[]');
+            // Users
+            getUsers() {
+                return JSON.parse(localStorage.getItem('users') || '[]');
             }
 
-            saveLicense(license) {
-                const licenses = this.getLicenses();
-                license.id = license.id || 'LIC' + Date.now().toString().slice(-6);
-                license.createdAt = license.createdAt || new Date().toISOString();
+            saveUser(user) {
+                const users = this.getUsers();
+                user.id = user.id || 'USR' + Date.now().toString().slice(-6);
+                user.createdAt = user.createdAt || new Date().toISOString();
                 
-                const existingIndex = licenses.findIndex(l => l.id === license.id);
+                const existingIndex = users.findIndex(u => u.id === user.id);
                 if (existingIndex >= 0) {
-                    licenses[existingIndex] = { ...licenses[existingIndex], ...license, updatedAt: new Date().toISOString() };
+                    users[existingIndex] = { ...users[existingIndex], ...user, updatedAt: new Date().toISOString() };
                 } else {
-                    licenses.push(license);
+                    users.push(user);
                 }
                 
-                localStorage.setItem('licenses', JSON.stringify(licenses));
-                this.addActivity(`License ${license.software} ${existingIndex >= 0 ? 'updated' : 'added'}`, 'license');
-                return license;
+                localStorage.setItem('users', JSON.stringify(users));
+                this.addActivity(`User ${user.name} ${existingIndex >= 0 ? 'updated' : 'added'}`, 'user');
+                return user;
             }
 
-            deleteLicense(licenseId) {
-                const licenses = this.getLicenses();
-                const license = licenses.find(l => l.id === licenseId);
-                const filtered = licenses.filter(l => l.id !== licenseId);
-                localStorage.setItem('licenses', JSON.stringify(filtered));
-                this.addActivity(`License ${license.software} deleted`, 'license');
+            deleteUser(userId) {
+                const users = this.getUsers();
+                const user = users.find(u => u.id === userId);
+                const filtered = users.filter(u => u.id !== userId);
+                localStorage.setItem('users', JSON.stringify(filtered));
+                this.addActivity(`User ${user.name} deleted`, 'user');
+            }
+
+            // Maintenance
+            getMaintenance() {
+                return JSON.parse(localStorage.getItem('maintenance') || '[]');
+            }
+
+            saveMaintenance(maintenance) {
+                const maintenanceList = this.getMaintenance();
+                maintenance.id = maintenance.id || 'MNT' + Date.now().toString().slice(-6);
+                maintenance.createdAt = maintenance.createdAt || new Date().toISOString();
+                
+                const existingIndex = maintenanceList.findIndex(m => m.id === maintenance.id);
+                if (existingIndex >= 0) {
+                    maintenanceList[existingIndex] = { ...maintenanceList[existingIndex], ...maintenance, updatedAt: new Date().toISOString() };
+                } else {
+                    maintenanceList.push(maintenance);
+                }
+                
+                localStorage.setItem('maintenance', JSON.stringify(maintenanceList));
+                this.addActivity(`Maintenance "${maintenance.title}" ${existingIndex >= 0 ? 'updated' : 'scheduled'}`, 'maintenance');
+                return maintenance;
             }
 
             // Activities
@@ -965,11 +999,44 @@
                     timestamp: new Date().toISOString()
                 });
                 
+                // Keep only last 50 activities
                 if (activities.length > 50) {
                     activities.splice(50);
                 }
                 
                 localStorage.setItem('activities', JSON.stringify(activities));
+            }
+
+            // Settings
+            getSettings() {
+                return JSON.parse(localStorage.getItem('settings') || '{}');
+            }
+
+            saveSettings(settings) {
+                localStorage.setItem('settings', JSON.stringify(settings));
+                this.addActivity('Settings updated', 'system');
+            }
+
+            // Export/Import
+            exportData() {
+                return {
+                    assets: this.getAssets(),
+                    users: this.getUsers(),
+                    maintenance: this.getMaintenance(),
+                    activities: this.getActivities(),
+                    settings: this.getSettings(),
+                    exportDate: new Date().toISOString()
+                };
+            }
+
+            importData(data) {
+                if (data.assets) localStorage.setItem('assets', JSON.stringify(data.assets));
+                if (data.users) localStorage.setItem('users', JSON.stringify(data.users));
+                if (data.maintenance) localStorage.setItem('maintenance', JSON.stringify(data.maintenance));
+                if (data.activities) localStorage.setItem('activities', JSON.stringify(data.activities));
+                if (data.settings) localStorage.setItem('settings', JSON.stringify(data.settings));
+                
+                this.addActivity('Data imported from backup', 'system');
             }
         }
 
@@ -978,91 +1045,23 @@
 
         // Global state
         let currentPage = 'dashboard';
-        let currentUser = null;
-
-        // Login/Register Functions
-        function showRegisterForm() {
-            document.getElementById('login-form').classList.add('hidden');
-            document.getElementById('register-form').classList.remove('hidden');
-        }
-
-        function showLoginForm() {
-            document.getElementById('register-form').classList.add('hidden');
-            document.getElementById('login-form').classList.remove('hidden');
-        }
-
-        function handleLogin(event) {
-            event.preventDefault();
-            
-            const email = document.getElementById('login-email').value;
-            const password = document.getElementById('login-password').value;
-            
-            const users = db.getUsers();
-            const user = users.find(u => u.email === email && u.password === password);
-            
-            if (user) {
-                currentUser = user;
-                localStorage.setItem('currentUser', JSON.stringify(user));
-                showApp();
-                showToast('Login successful!');
-            } else {
-                showToast('Invalid email or password', 'error');
-            }
-        }
-
-        function handleRegister(event) {
-            event.preventDefault();
-            
-            const user = {
-                name: document.getElementById('register-name').value,
-                email: document.getElementById('register-email').value,
-                password: document.getElementById('register-password').value,
-                role: document.getElementById('register-role').value,
-                department: document.getElementById('register-department').value,
-                status: 'Active',
-                lastActive: new Date().toISOString()
-            };
-            
-            db.saveUser(user);
-            showToast('Registration successful! Please login.');
-            showLoginForm();
-        }
-
-        function handleLogout() {
-            currentUser = null;
-            localStorage.removeItem('currentUser');
-            showLogin();
-            showToast('Logged out successfully');
-        }
-
-        function showLogin() {
-            document.getElementById('login-page').classList.remove('hidden');
-            document.getElementById('app').classList.add('hidden');
-        }
-
-        function showApp() {
-            document.getElementById('login-page').classList.add('hidden');
-            document.getElementById('app').classList.remove('hidden');
-            
-            // Update user info in header
-            if (currentUser) {
-                document.getElementById('user-name').textContent = currentUser.name;
-                document.getElementById('user-initials').textContent = currentUser.name.split(' ').map(n => n[0]).join('').toUpperCase();
-            }
-            
-            // Initialize dashboard
-            updateDashboard();
-            initDashboardCharts();
-        }
+        let isDarkMode = false;
+        let maintenanceView = 'calendar';
+        let currentSettingsTab = 'general';
+        let currentMonth = new Date().getMonth();
+        let currentYear = new Date().getFullYear();
 
         // Page navigation
         function showPage(pageName) {
+            // Hide all pages
             document.querySelectorAll('.page').forEach(page => {
                 page.classList.add('hidden');
             });
             
+            // Show selected page
             document.getElementById(pageName + '-page').classList.remove('hidden');
             
+            // Update nav buttons
             document.querySelectorAll('.nav-btn').forEach(btn => {
                 btn.classList.remove('text-indigo-600');
                 btn.classList.add('text-gray-700');
@@ -1073,24 +1072,35 @@
             
             currentPage = pageName;
             
+            // Initialize page-specific content
             if (pageName === 'dashboard') {
                 updateDashboard();
                 initDashboardCharts();
             } else if (pageName === 'assets') {
                 loadAssets();
-            } else if (pageName === 'licenses') {
-                loadLicenses();
+            } else if (pageName === 'maintenance' && maintenanceView === 'calendar') {
+                generateCalendar();
+            } else if (pageName === 'maintenance' && maintenanceView === 'list') {
+                loadMaintenanceList();
+            } else if (pageName === 'reports') {
+                initReportsCharts();
+            } else if (pageName === 'users') {
+                loadUsers();
+            } else if (pageName === 'settings') {
+                loadSettings();
             }
             
+            // Re-initialize icons
             setTimeout(() => lucide.createIcons(), 100);
         }
 
         // Update Dashboard
         function updateDashboard() {
             const assets = db.getAssets();
-            const licenses = db.getLicenses();
+            const maintenance = db.getMaintenance();
             const activities = db.getActivities();
             
+            // Update KPIs
             document.getElementById('total-assets').textContent = assets.length;
             document.getElementById('active-assets').textContent = assets.filter(a => a.status === 'Active').length;
             
@@ -1098,15 +1108,7 @@
                 Math.round((assets.filter(a => a.status === 'Active').length / assets.length) * 100) : 0;
             document.getElementById('utilization-rate').textContent = utilizationRate + '% utilization';
             
-            document.getElementById('total-licenses').textContent = licenses.length;
-            document.getElementById('active-licenses').textContent = licenses.filter(l => !l.expiryDate || new Date(l.expiryDate) > new Date()).length;
-            document.getElementById('expiring-licenses').textContent = licenses.filter(l => {
-                if (!l.expiryDate) return false;
-                const expiryDate = new Date(l.expiryDate);
-                const thirtyDaysFromNow = new Date();
-                thirtyDaysFromNow.setDate(thirtyDaysFromNow.getDate() + 30);
-                return expiryDate <= thirtyDaysFromNow && expiryDate > new Date();
-            }).length;
+            document.getElementById('maintenance-count').textContent = maintenance.filter(m => m.status === 'Scheduled').length;
             
             // Update recent activity
             const activityContainer = document.getElementById('recent-activity');
@@ -1140,7 +1142,7 @@
             const icons = {
                 'asset': 'package',
                 'user': 'user',
-                'license': 'shield',
+                'maintenance': 'wrench',
                 'system': 'settings'
             };
             return icons[type] || 'activity';
@@ -1150,8 +1152,8 @@
             const colors = {
                 'asset': 'bg-green-100',
                 'user': 'bg-blue-100',
-                'license': 'bg-purple-100',
-                'system': 'bg-gray-100'
+                'maintenance': 'bg-yellow-100',
+                'system': 'bg-purple-100'
             };
             return colors[type] || 'bg-gray-100';
         }
@@ -1210,69 +1212,6 @@
             lucide.createIcons();
         }
 
-        // Load Licenses
-        function loadLicenses() {
-            const licenses = db.getLicenses();
-            const tbody = document.getElementById('licenses-table-body');
-            tbody.innerHTML = '';
-            
-            licenses.forEach(license => {
-                const row = document.createElement('tr');
-                row.className = 'hover:bg-gray-50';
-                
-                const statusClass = getLicenseStatusClass(license);
-                
-                row.innerHTML = `
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm font-medium text-gray-900">${license.software}</div>
-                        <div class="text-sm text-gray-500">${license.vendor || ''}</div>
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${license.licenseKey}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${license.type}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${license.seats}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${license.used || 0}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${license.expiryDate ? formatDate(license.expiryDate) : 'Perpetual'}</td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <span class="status-badge ${statusClass}">${getLicenseStatusText(license)}</span>
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm">
-                        <button onclick="editLicense('${license.id}')" class="text-gray-600 hover:text-gray-900 mr-3">Edit</button>
-                        <button onclick="deleteLicense('${license.id}')" class="text-red-600 hover:text-red-900">Delete</button>
-                    </td>
-                `;
-                
-                tbody.appendChild(row);
-            });
-            
-            lucide.createIcons();
-        }
-
-        function getLicenseStatusClass(license) {
-            if (!license.expiryDate) return 'bg-green-100 text-green-800';
-            
-            const expiryDate = new Date(license.expiryDate);
-            const now = new Date();
-            const thirtyDaysFromNow = new Date();
-            thirtyDaysFromNow.setDate(thirtyDaysFromNow.getDate() + 30);
-            
-            if (expiryDate < now) return 'bg-red-100 text-red-800';
-            if (expiryDate <= thirtyDaysFromNow) return 'bg-yellow-100 text-yellow-800';
-            return 'bg-green-100 text-green-800';
-        }
-
-        function getLicenseStatusText(license) {
-            if (!license.expiryDate) return 'Active';
-            
-            const expiryDate = new Date(license.expiryDate);
-            const now = new Date();
-            const thirtyDaysFromNow = new Date();
-            thirtyDaysFromNow.setDate(thirtyDaysFromNow.getDate() + 30);
-            
-            if (expiryDate < now) return 'Expired';
-            if (expiryDate <= thirtyDaysFromNow) return 'Expiring Soon';
-            return 'Active';
-        }
-
         function getStatusClass(status) {
             const classes = {
                 'Active': 'bg-green-100 text-green-800',
@@ -1297,142 +1236,6 @@
             return date.toLocaleDateString('id-ID');
         }
 
-        // Asset Modal Functions
-        function openAddAssetModal() {
-            document.getElementById('asset-modal-title').textContent = 'Add New Asset';
-            document.getElementById('asset-submit-btn').textContent = 'Save Asset';
-            document.getElementById('asset-id').value = '';
-            document.getElementById('add-asset-form').reset();
-            document.getElementById('asset-purchase-date').valueAsDate = new Date();
-            document.getElementById('add-asset-modal').classList.add('show');
-        }
-
-        function editAsset(assetId) {
-            const asset = db.getAssets().find(a => a.id === assetId);
-            if (asset) {
-                document.getElementById('asset-modal-title').textContent = 'Edit Asset';
-                document.getElementById('asset-submit-btn').textContent = 'Update Asset';
-                document.getElementById('asset-id').value = asset.id;
-                document.getElementById('asset-name').value = asset.name;
-                document.getElementById('asset-category').value = asset.category;
-                document.getElementById('asset-status').value = asset.status;
-                document.getElementById('asset-location').value = asset.location;
-                document.getElementById('asset-value').value = asset.value;
-                document.getElementById('asset-purchase-date').value = asset.purchaseDate;
-                document.getElementById('asset-description').value = asset.description || '';
-                document.getElementById('add-asset-modal').classList.add('show');
-            }
-        }
-
-        function saveAsset(event) {
-            event.preventDefault();
-            
-            const assetId = document.getElementById('asset-id').value;
-            const asset = {
-                name: document.getElementById('asset-name').value,
-                category: document.getElementById('asset-category').value,
-                status: document.getElementById('asset-status').value,
-                location: document.getElementById('asset-location').value,
-                value: parseInt(document.getElementById('asset-value').value),
-                purchaseDate: document.getElementById('asset-purchase-date').value,
-                description: document.getElementById('asset-description').value
-            };
-            
-            if (assetId) {
-                asset.id = assetId;
-                db.saveAsset(asset);
-                showToast('Asset updated successfully');
-            } else {
-                db.saveAsset(asset);
-                showToast('Asset saved successfully');
-            }
-            
-            closeModal('add-asset-modal');
-            loadAssets();
-            if (currentPage === 'dashboard') updateDashboard();
-        }
-
-        function deleteAsset(assetId) {
-            if (confirm('Are you sure you want to delete this asset?')) {
-                db.deleteAsset(assetId);
-                loadAssets();
-                showToast('Asset deleted successfully');
-                if (currentPage === 'dashboard') updateDashboard();
-            }
-        }
-
-        function viewAsset(assetId) {
-            const asset = db.getAssets().find(a => a.id === assetId);
-            if (asset) {
-                alert(`Asset Details:\n\nName: ${asset.name}\nCategory: ${asset.category}\nStatus: ${asset.status}\nLocation: ${asset.location}\nValue: Rp ${asset.value.toLocaleString('id-ID')}\nPurchase Date: ${formatDate(asset.purchaseDate)}\nDescription: ${asset.description || 'N/A'}`);
-            }
-        }
-
-        // License Modal Functions
-        function openAddLicenseModal() {
-            document.getElementById('license-modal-title').textContent = 'Add New License';
-            document.getElementById('license-submit-btn').textContent = 'Save License';
-            document.getElementById('license-id').value = '';
-            document.getElementById('add-license-form').reset();
-            document.getElementById('add-license-modal').classList.add('show');
-        }
-
-        function editLicense(licenseId) {
-            const license = db.getLicenses().find(l => l.id === licenseId);
-            if (license) {
-                document.getElementById('license-modal-title').textContent = 'Edit License';
-                document.getElementById('license-submit-btn').textContent = 'Update License';
-                document.getElementById('license-id').value = license.id;
-                document.getElementById('license-software').value = license.software;
-                document.getElementById('license-key').value = license.licenseKey;
-                document.getElementById('license-type').value = license.type;
-                document.getElementById('license-seats').value = license.seats;
-                document.getElementById('license-used').value = license.used || 0;
-                document.getElementById('license-expiry').value = license.expiryDate || '';
-                document.getElementById('license-vendor').value = license.vendor || '';
-                document.getElementById('license-description').value = license.description || '';
-                document.getElementById('add-license-modal').classList.add('show');
-            }
-        }
-
-        function saveLicense(event) {
-            event.preventDefault();
-            
-            const licenseId = document.getElementById('license-id').value;
-            const license = {
-                software: document.getElementById('license-software').value,
-                licenseKey: document.getElementById('license-key').value,
-                type: document.getElementById('license-type').value,
-                seats: parseInt(document.getElementById('license-seats').value),
-                used: parseInt(document.getElementById('license-used').value) || 0,
-                expiryDate: document.getElementById('license-expiry').value,
-                vendor: document.getElementById('license-vendor').value,
-                description: document.getElementById('license-description').value
-            };
-            
-            if (licenseId) {
-                license.id = licenseId;
-                db.saveLicense(license);
-                showToast('License updated successfully');
-            } else {
-                db.saveLicense(license);
-                showToast('License saved successfully');
-            }
-            
-            closeModal('add-license-modal');
-            loadLicenses();
-            if (currentPage === 'dashboard') updateDashboard();
-        }
-
-        function deleteLicense(licenseId) {
-            if (confirm('Are you sure you want to delete this license?')) {
-                db.deleteLicense(licenseId);
-                loadLicenses();
-                showToast('License deleted successfully');
-                if (currentPage === 'dashboard') updateDashboard();
-            }
-        }
-
         // Filter Assets
         function filterAssets() {
             const searchTerm = document.getElementById('asset-search').value.toLowerCase();
@@ -1449,6 +1252,7 @@
                 return matchesSearch && matchesCategory && matchesStatus;
             });
             
+            // Update table with filtered results
             const tbody = document.getElementById('assets-table-body');
             tbody.innerHTML = '';
             
@@ -1528,43 +1332,729 @@
             window.URL.revokeObjectURL(url);
         }
 
-        // Modal Functions
+        // Asset Modal Functions
+        function openAddAssetModal() {
+            document.getElementById('add-asset-modal').classList.add('show');
+            // Set today's date as default
+            document.getElementById('asset-purchase-date').valueAsDate = new Date();
+        }
+
         function closeModal(modalId) {
             document.getElementById(modalId).classList.remove('show');
+            // Reset form
+            const form = document.querySelector(`#${modalId} form`);
+            if (form) form.reset();
         }
 
-        // Mobile Menu
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('show');
-        }
-
-        // Utility Functions
-        function toggleDarkMode() {
-            document.body.classList.toggle('dark');
-        }
-
-        function toggleNotifications() {
-            // Placeholder for notifications
-            showToast('No new notifications');
-        }
-
-        function showToast(message, type = 'success') {
-            const toast = document.getElementById('toast');
-            const toastMessage = document.getElementById('toast-message');
+        function saveAsset(event) {
+            event.preventDefault();
             
-            toastMessage.textContent = message;
-            toast.style.background = type === 'error' ? '#ef4444' : '#10b981';
-            toast.classList.add('show');
+            const asset = {
+                name: document.getElementById('asset-name').value,
+                category: document.getElementById('asset-category').value,
+                status: document.getElementById('asset-status').value,
+                location: document.getElementById('asset-location').value,
+                value: parseInt(document.getElementById('asset-value').value),
+                purchaseDate: document.getElementById('asset-purchase-date').value,
+                description: document.getElementById('asset-description').value
+            };
             
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
+            db.saveAsset(asset);
+            closeModal('add-asset-modal');
+            loadAssets();
+            showToast('Asset saved successfully');
+        }
+
+        function viewAsset(assetId) {
+            const asset = db.getAssets().find(a => a.id === assetId);
+            if (asset) {
+                alert(`Asset Details:\n\nName: ${asset.name}\nCategory: ${asset.category}\nStatus: ${asset.status}\nLocation: ${asset.location}\nValue: Rp ${asset.value.toLocaleString('id-ID')}\nPurchase Date: ${formatDate(asset.purchaseDate)}\nDescription: ${asset.description || 'N/A'}`);
+            }
+        }
+
+        function editAsset(assetId) {
+            const asset = db.getAssets().find(a => a.id === assetId);
+            if (asset) {
+                // Fill form with asset data
+                document.getElementById('asset-name').value = asset.name;
+                document.getElementById('asset-category').value = asset.category;
+                document.getElementById('asset-status').value = asset.status;
+                document.getElementById('asset-location').value = asset.location;
+                document.getElementById('asset-value').value = asset.value;
+                document.getElementById('asset-purchase-date').value = asset.purchaseDate;
+                document.getElementById('asset-description').value = asset.description || '';
+                
+                // Add hidden field for asset ID
+                const form = document.getElementById('add-asset-form');
+                const existingIdField = form.querySelector('input[name="asset-id"]');
+                if (existingIdField) {
+                    existingIdField.value = asset.id;
+                } else {
+                    const idField = document.createElement('input');
+                    idField.type = 'hidden';
+                    idField.name = 'asset-id';
+                    idField.value = asset.id;
+                    form.appendChild(idField);
+                }
+                
+                openAddAssetModal();
+            }
+        }
+
+        function deleteAsset(assetId) {
+            if (confirm('Are you sure you want to delete this asset?')) {
+                db.deleteAsset(assetId);
+                loadAssets();
+                showToast('Asset deleted successfully');
+            }
+        }
+
+        // Load Users
+        function loadUsers() {
+            const users = db.getUsers();
+            const tbody = document.getElementById('users-table-body');
+            tbody.innerHTML = '';
+            
+            users.forEach(user => {
+                const row = document.createElement('tr');
+                row.className = 'hover:bg-gray-50';
+                
+                const roleClass = getRoleClass(user.role);
+                const initials = user.name.split(' ').map(n => n[0]).join('').toUpperCase();
+                
+                row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center mr-3">
+                                <span class="text-white font-medium">${initials}</span>
+                            </div>
+                            <div>
+                                <div class="text-sm font-medium text-gray-900">${user.name}</div>
+                                <div class="text-sm text-gray-500">${user.email}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="status-badge ${roleClass}">${user.role}</span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${user.department}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="status-badge ${user.status === 'Active' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}">${user.status}</span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${getTimeAgo(new Date(user.lastActive))}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm">
+                        <button onclick="editUser('${user.id}')" class="text-indigo-600 hover:text-indigo-900 mr-3">Edit</button>
+                        <button onclick="deleteUser('${user.id}')" class="text-red-600 hover:text-red-900">Delete</button>
+                    </td>
+                `;
+                
+                tbody.appendChild(row);
+            });
+        }
+
+        function getRoleClass(role) {
+            const classes = {
+                'Administrator': 'bg-purple-100 text-purple-800',
+                'Manager': 'bg-blue-100 text-blue-800',
+                'Staff': 'bg-green-100 text-green-800',
+                'Viewer': 'bg-gray-100 text-gray-800'
+            };
+            return classes[role] || 'bg-gray-100 text-gray-800';
+        }
+
+        // User Modal Functions
+        function openAddUserModal() {
+            document.getElementById('add-user-modal').classList.add('show');
+        }
+
+        function saveUser(event) {
+            event.preventDefault();
+            
+            const user = {
+                name: document.getElementById('user-name').value,
+                email: document.getElementById('user-email').value,
+                role: document.getElementById('user-role').value,
+                department: document.getElementById('user-department').value,
+                status: 'Active',
+                lastActive: new Date().toISOString()
+            };
+            
+            db.saveUser(user);
+            closeModal('add-user-modal');
+            loadUsers();
+            showToast('User saved successfully');
+        }
+
+        function editUser(userId) {
+            const user = db.getUsers().find(u => u.id === userId);
+            if (user) {
+                document.getElementById('user-name').value = user.name;
+                document.getElementById('user-email').value = user.email;
+                document.getElementById('user-role').value = user.role;
+                document.getElementById('user-department').value = user.department;
+                
+                // Add hidden field for user ID
+                const form = document.getElementById('add-user-form');
+                const existingIdField = form.querySelector('input[name="user-id"]');
+                if (existingIdField) {
+                    existingIdField.value = user.id;
+                } else {
+                    const idField = document.createElement('input');
+                    idField.type = 'hidden';
+                    idField.name = 'user-id';
+                    idField.value = user.id;
+                    form.appendChild(idField);
+                }
+                
+                openAddUserModal();
+            }
+        }
+
+        function deleteUser(userId) {
+            if (confirm('Are you sure you want to delete this user?')) {
+                db.deleteUser(userId);
+                loadUsers();
+                showToast('User deleted successfully');
+            }
+        }
+
+        // Maintenance Functions
+        function setMaintenanceView(view) {
+            maintenanceView = view;
+            
+            // Update buttons
+            document.querySelectorAll('.maintenance-view-btn').forEach(btn => {
+                btn.classList.remove('bg-indigo-600', 'text-white');
+                btn.classList.add('bg-gray-200', 'text-gray-700');
+            });
+            
+            event.target.classList.remove('bg-gray-200', 'text-gray-700');
+            event.target.classList.add('bg-indigo-600', 'text-white');
+            
+            // Toggle views
+            if (view === 'calendar') {
+                document.getElementById('maintenance-calendar').classList.remove('hidden');
+                document.getElementById('maintenance-list').classList.add('hidden');
+                generateCalendar();
+            } else {
+                document.getElementById('maintenance-calendar').classList.add('hidden');
+                document.getElementById('maintenance-list').classList.remove('hidden');
+                loadMaintenanceList();
+            }
+        }
+
+        function generateCalendar() {
+            const calendarGrid = document.getElementById('calendar-grid');
+            const maintenance = db.getMaintenance();
+            
+            // Get first day of month and number of days
+            const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+            const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+            
+            // Clear calendar
+            calendarGrid.innerHTML = '';
+            
+            // Add day headers
+            const dayHeaders = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            dayHeaders.forEach(day => {
+                const header = document.createElement('div');
+                header.className = 'font-medium text-gray-500 py-2';
+                header.textContent = day;
+                calendarGrid.appendChild(header);
+            });
+            
+            // Add empty cells for days before month starts
+            for (let i = 0; i < firstDay; i++) {
+                const emptyDay = document.createElement('div');
+                emptyDay.className = 'py-2';
+                calendarGrid.appendChild(emptyDay);
+            }
+            
+            // Add days of the month
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dayElement = document.createElement('div');
+                dayElement.className = 'py-2 hover:bg-gray-50 rounded cursor-pointer relative';
+                dayElement.innerHTML = `<span class="text-sm">${day}</span>`;
+                
+                // Check if there's maintenance on this day
+                const dateStr = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                const dayMaintenance = maintenance.filter(m => m.date === dateStr);
+                
+                if (dayMaintenance.length > 0) {
+                    dayElement.innerHTML += `<div class="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-blue-500 rounded-full"></div>`;
+                    dayElement.title = dayMaintenance.map(m => m.title).join(', ');
+                }
+                
+                calendarGrid.appendChild(dayElement);
+            }
+            
+            // Update month/year display
+            const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+                              'July', 'August', 'September', 'October', 'November', 'December'];
+            document.querySelector('#maintenance-calendar h3').textContent = `${monthNames[currentMonth]} ${currentYear}`;
+        }
+
+        function changeMonth(direction) {
+            currentMonth += direction;
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            } else if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            }
+            generateCalendar();
+        }
+
+        function loadMaintenanceList() {
+            const maintenance = db.getMaintenance();
+            const listContainer = document.getElementById('maintenance-list-items');
+            listContainer.innerHTML = '';
+            
+            maintenance.forEach(item => {
+                const itemEl = document.createElement('div');
+                itemEl.className = 'p-6 hover:bg-gray-50';
+                
+                const statusClass = item.status === 'Completed' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800';
+                
+                itemEl.innerHTML = `
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <h4 class="text-lg font-medium text-gray-900">${item.title}</h4>
+                            <p class="text-gray-600 mt-1">${item.description || 'No description'}</p>
+                            <div class="flex items-center space-x-4 mt-3 text-sm text-gray-500">
+                                <span class="flex items-center">
+                                    <i data-lucide="calendar" class="w-4 h-4 mr-1"></i>
+                                    ${formatDate(item.date)}
+                                </span>
+                                <span class="flex items-center">
+                                    <i data-lucide="clock" class="w-4 h-4 mr-1"></i>
+                                    ${item.time}
+                                </span>
+                                <span class="flex items-center">
+                                    <i data-lucide="tag" class="w-4 h-4 mr-1"></i>
+                                    ${item.type}
+                                </span>
+                                <span class="flex items-center">
+                                    <i data-lucide="package" class="w-4 h-4 mr-1"></i>
+                                    ${item.assetName}
+                                </span>
+                            </div>
+                        </div>
+                        <span class="status-badge ${statusClass}">${item.status}</span>
+                    </div>
+                `;
+                
+                listContainer.appendChild(itemEl);
+            });
+            
+            lucide.createIcons();
+        }
+
+        // Maintenance Modal Functions
+        function openScheduleMaintenanceModal() {
+            document.getElementById('schedule-maintenance-modal').classList.add('show');
+            
+            // Populate asset dropdown
+            const assets = db.getAssets();
+            const assetSelect = document.getElementById('maintenance-asset');
+            assetSelect.innerHTML = '<option value="">Select Asset</option>';
+            
+            assets.forEach(asset => {
+                const option = document.createElement('option');
+                option.value = asset.id;
+                option.textContent = `${asset.name} (${asset.id})`;
+                assetSelect.appendChild(option);
+            });
+            
+            // Set default date to today
+            document.getElementById('maintenance-date').valueAsDate = new Date();
+        }
+
+        function saveMaintenance(event) {
+            event.preventDefault();
+            
+            const assetId = document.getElementById('maintenance-asset').value;
+            const asset = db.getAssets().find(a => a.id === assetId);
+            
+            const maintenance = {
+                title: document.getElementById('maintenance-title').value,
+                assetId: assetId,
+                assetName: asset ? asset.name : 'Unknown',
+                date: document.getElementById('maintenance-date').value,
+                time: document.getElementById('maintenance-time').value,
+                type: document.getElementById('maintenance-type').value,
+                status: 'Scheduled',
+                description: document.getElementById('maintenance-description').value
+            };
+            
+            db.saveMaintenance(maintenance);
+            closeModal('schedule-maintenance-modal');
+            
+            if (maintenanceView === 'calendar') {
+                generateCalendar();
+            } else {
+                loadMaintenanceList();
+            }
+            
+            showToast('Maintenance scheduled successfully');
+        }
+
+        // Reports Functions
+        function generateReport(type) {
+            const data = db.exportData();
+            
+            switch(type) {
+                case 'inventory':
+                    generateInventoryReport(data.assets);
+                    break;
+                case 'depreciation':
+                    generateDepreciationReport(data.assets);
+                    break;
+                case 'maintenance':
+                    generateMaintenanceReport(data.maintenance);
+                    break;
+            }
+            
+            showToast(`${type.charAt(0).toUpperCase() + type.slice(1)} report generated`);
+        }
+
+        function generateInventoryReport(assets) {
+            let html = `
+                <html>
+                <head>
+                    <title>Asset Inventory Report</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; margin: 20px; }
+                        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+                        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+                        th { background-color: #f2f2f2; }
+                        h1 { color: #333; }
+                    </style>
+                </head>
+                <body>
+                    <h1>Asset Inventory Report</h1>
+                    <p>Generated on: ${new Date().toLocaleString()}</p>
+                    <p>Total Assets: ${assets.length}</p>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Status</th>
+                                <th>Location</th>
+                                <th>Value</th>
+                                <th>Purchase Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            `;
+            
+            assets.forEach(asset => {
+                html += `
+                    <tr>
+                        <td>${asset.id}</td>
+                        <td>${asset.name}</td>
+                        <td>${asset.category}</td>
+                        <td>${asset.status}</td>
+                        <td>${asset.location}</td>
+                        <td>Rp ${asset.value.toLocaleString('id-ID')}</td>
+                        <td>${formatDate(asset.purchaseDate)}</td>
+                    </tr>
+                `;
+            });
+            
+            html += `
+                        </tbody>
+                    </table>
+                </body>
+                </html>
+            `;
+            
+            const blob = new Blob([html], { type: 'text/html' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'asset-inventory-report.html';
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+
+        function generateDepreciationReport(assets) {
+            // Simple depreciation calculation (5% per year)
+            const report = assets.map(asset => {
+                const purchaseDate = new Date(asset.purchaseDate);
+                const yearsOld = (new Date() - purchaseDate) / (365.25 * 24 * 60 * 60 * 1000);
+                const depreciationRate = 0.05; // 5% per year
+                const currentValue = asset.value * Math.pow(1 - depreciationRate, yearsOld);
+                
+                return {
+                    ...asset,
+                    yearsOld: Math.round(yearsOld * 10) / 10,
+                    currentValue: Math.round(currentValue),
+                    totalDepreciation: asset.value - Math.round(currentValue)
+                };
+            });
+            
+            let html = `
+                <html>
+                <head>
+                    <title>Asset Depreciation Report</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; margin: 20px; }
+                        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+                        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+                        th { background-color: #f2f2f2; }
+                        h1 { color: #333; }
+                    </style>
+                </head>
+                <body>
+                    <h1>Asset Depreciation Report</h1>
+                    <p>Generated on: ${new Date().toLocaleString()}</p>
+                    <p>Depreciation Rate: 5% per year</p>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Asset Name</th>
+                                <th>Purchase Value</th>
+                                <th>Current Value</th>
+                                <th>Total Depreciation</th>
+                                <th>Years Old</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            `;
+            
+            report.forEach(asset => {
+                html += `
+                    <tr>
+                        <td>${asset.name}</td>
+                        <td>Rp ${asset.value.toLocaleString('id-ID')}</td>
+                        <td>Rp ${asset.currentValue.toLocaleString('id-ID')}</td>
+                        <td>Rp ${asset.totalDepreciation.toLocaleString('id-ID')}</td>
+                        <td>${asset.yearsOld} years</td>
+                    </tr>
+                `;
+            });
+            
+            html += `
+                        </tbody>
+                    </table>
+                </body>
+                </html>
+            `;
+            
+            const blob = new Blob([html], { type: 'text/html' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'asset-depreciation-report.html';
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+
+        function generateMaintenanceReport(maintenance) {
+            let html = `
+                <html>
+                <head>
+                    <title>Maintenance Report</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; margin: 20px; }
+                        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+                        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+                        th { background-color: #f2f2f2; }
+                        h1 { color: #333; }
+                    </style>
+                </head>
+                <body>
+                    <h1>Maintenance Report</h1>
+                    <p>Generated on: ${new Date().toLocaleString()}</p>
+                    <p>Total Maintenance Records: ${maintenance.length}</p>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Asset</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            `;
+            
+            maintenance.forEach(item => {
+                html += `
+                    <tr>
+                        <td>${item.title}</td>
+                        <td>${item.assetName}</td>
+                        <td>${formatDate(item.date)}</td>
+                        <td>${item.time}</td>
+                        <td>${item.type}</td>
+                        <td>${item.status}</td>
+                    </tr>
+                `;
+            });
+            
+            html += `
+                        </tbody>
+                    </table>
+                </body>
+                </html>
+            `;
+            
+            const blob = new Blob([html], { type: 'text/html' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'maintenance-report.html';
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+
+        // Settings Functions
+        function setSettingsTab(tab) {
+            currentSettingsTab = tab;
+            
+            // Update tabs
+            document.querySelectorAll('.settings-tab').forEach(tabBtn => {
+                tabBtn.classList.remove('border-indigo-500', 'text-indigo-600');
+                tabBtn.classList.add('border-transparent', 'text-gray-500');
+            });
+            
+            event.target.classList.remove('border-transparent', 'text-gray-500');
+            event.target.classList.add('border-indigo-500', 'text-indigo-600');
+            
+            // Show content
+            document.querySelectorAll('.settings-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            
+            document.getElementById(tab + '-settings').classList.remove('hidden');
+        }
+
+        function loadSettings() {
+            const settings = db.getSettings();
+            
+            // Load general settings
+            document.getElementById('company-name').value = settings.companyName || '';
+            document.getElementById('default-currency').value = settings.defaultCurrency || 'IDR';
+            document.getElementById('date-format').value = settings.dateFormat || 'DD/MM/YYYY';
+            
+            // Load notification settings
+            document.getElementById('notify-maintenance').checked = settings.notifyMaintenance !== false;
+            document.getElementById('notify-warranty').checked = settings.notifyWarranty !== false;
+            document.getElementById('notify-sms').checked = settings.notifySms === true;
+            
+            // Load security settings
+            document.getElementById('session-timeout').value = settings.sessionTimeout || 30;
+            document.getElementById('require-2fa').checked = settings.require2FA !== false;
+            
+            // Load backup settings
+            document.getElementById('backup-frequency').value = settings.backupFrequency || 'weekly';
+            
+            // Load API settings
+            document.getElementById('api-key').value = settings.apiKey || 'sk-1234567890abcdef';
+        }
+
+        function saveSettings() {
+            const settings = db.getSettings();
+            
+            // Update settings based on current tab
+            if (currentSettingsTab === 'general') {
+                settings.companyName = document.getElementById('company-name').value;
+                settings.defaultCurrency = document.getElementById('default-currency').value;
+                settings.dateFormat = document.getElementById('date-format').value;
+            } else if (currentSettingsTab === 'notifications') {
+                settings.notifyMaintenance = document.getElementById('notify-maintenance').checked;
+                settings.notifyWarranty = document.getElementById('notify-warranty').checked;
+                settings.notifySms = document.getElementById('notify-sms').checked;
+            } else if (currentSettingsTab === 'security') {
+                settings.sessionTimeout = parseInt(document.getElementById('session-timeout').value);
+                settings.require2FA = document.getElementById('require-2fa').checked;
+            } else if (currentSettingsTab === 'backup') {
+                settings.backupFrequency = document.getElementById('backup-frequency').value;
+            } else if (currentSettingsTab === 'api') {
+                settings.apiKey = document.getElementById('api-key').value;
+            }
+            
+            db.saveSettings(settings);
+            showToast('Settings saved successfully');
+        }
+
+        function backupData() {
+            const data = db.exportData();
+            const json = JSON.stringify(data, null, 2);
+            const blob = new Blob([json], { type: 'application/json' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `asset-management-backup-${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+            window.URL.revokeObjectURL(url);
+            
+            showToast('Data backed up successfully');
+        }
+
+        function restoreData() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+            
+            input.onchange = function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        try {
+                            const data = JSON.parse(e.target.result);
+                            db.importData(data);
+                            showToast('Data restored successfully');
+                            
+                            // Refresh current page
+                            if (currentPage === 'dashboard') updateDashboard();
+                            else if (currentPage === 'assets') loadAssets();
+                            else if (currentPage === 'users') loadUsers();
+                            
+                        } catch (error) {
+                            showToast('Error: Invalid backup file', 'error');
+                        }
+                    };
+                    reader.readAsText(file);
+                }
+            };
+            
+            input.click();
+        }
+
+        function toggleApiKeyVisibility() {
+            const input = document.getElementById('api-key');
+            const button = event.target;
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                button.textContent = 'Hide';
+            } else {
+                input.type = 'password';
+                button.textContent = 'Show';
+            }
+        }
+
+        function generateApiKey() {
+            const newKey = 'sk-' + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+            document.getElementById('api-key').value = newKey;
+            showToast('New API key generated');
         }
 
         // Chart Functions
         function initDashboardCharts() {
             const assets = db.getAssets();
+            const maintenance = db.getMaintenance();
             
             // Asset Distribution Chart
             const assetCtx = document.getElementById('assetChart');
@@ -1612,6 +2102,7 @@
                     maintenanceCtx.chart.destroy();
                 }
                 
+                // Generate monthly data
                 const monthlyData = {
                     'Jan': { completed: 12, scheduled: 8 },
                     'Feb': { completed: 19, scheduled: 12 },
@@ -1648,24 +2139,187 @@
             }
         }
 
+        function initReportsCharts() {
+            const assets = db.getAssets();
+            
+            // Asset Value Chart
+            const valueCtx = document.getElementById('valueChart');
+            if (valueCtx) {
+                if (valueCtx.chart) {
+                    valueCtx.chart.destroy();
+                }
+                
+                const categoryValues = {};
+                assets.forEach(asset => {
+                    categoryValues[asset.category] = (categoryValues[asset.category] || 0) + asset.value;
+                });
+                
+                valueCtx.chart = new Chart(valueCtx, {
+                    type: 'pie',
+                    data: {
+                        labels: Object.keys(categoryValues),
+                        datasets: [{
+                            data: Object.values(categoryValues),
+                            backgroundColor: [
+                                '#6366f1',
+                                '#8b5cf6',
+                                '#ec4899',
+                                '#f59e0b'
+                            ],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom'
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Cost Chart
+            const costCtx = document.getElementById('costChart');
+            if (costCtx) {
+                if (costCtx.chart) {
+                    costCtx.chart.destroy();
+                }
+                
+                costCtx.chart = new Chart(costCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                        datasets: [{
+                            label: 'Maintenance Costs',
+                            data: [2400000, 1800000, 3200000, 2100000, 2800000, 1900000],
+                            borderColor: '#6366f1',
+                            backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                            tension: 0.4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    callback: function(value) {
+                                        return 'Rp ' + value.toLocaleString('id-ID');
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        // Utility Functions
+        function toggleDarkMode() {
+            isDarkMode = !isDarkMode;
+            document.body.classList.toggle('dark');
+            
+            // Update charts for dark mode
+            if (currentPage === 'dashboard') {
+                updateDashboardChartsTheme();
+            }
+        }
+
+        function updateDashboardChartsTheme() {
+            // Update chart colors for dark mode
+            const textColor = isDarkMode ? '#ffffff' : '#374151';
+            const gridColor = isDarkMode ? '#374151' : '#e5e7eb';
+            
+            [document.getElementById('assetChart'), document.getElementById('maintenanceChart')].forEach(ctx => {
+                if (ctx && ctx.chart) {
+                    ctx.chart.options.plugins.legend.labels.color = textColor;
+                    if (ctx.chart.options.scales) {
+                        Object.values(ctx.chart.options.scales).forEach(scale => {
+                            scale.ticks.color = textColor;
+                            scale.grid.color = gridColor;
+                        });
+                    }
+                    ctx.chart.update();
+                }
+            });
+        }
+
+        function toggleNotifications() {
+            const panel = document.getElementById('notification-panel');
+            panel.classList.toggle('hidden');
+            
+            if (!panel.classList.contains('hidden')) {
+                loadNotifications();
+            }
+        }
+
+        function loadNotifications() {
+            const activities = db.getActivities().slice(0, 10);
+            const notificationList = document.getElementById('notification-list');
+            notificationList.innerHTML = '';
+            
+            if (activities.length === 0) {
+                notificationList.innerHTML = '<div class="p-4 text-center text-gray-500">No notifications</div>';
+                return;
+            }
+            
+            activities.forEach(activity => {
+                const notificationEl = document.createElement('div');
+                notificationEl.className = 'p-4 hover:bg-gray-50 border-b border-gray-100';
+                
+                const iconClass = getActivityIcon(activity.type);
+                const iconColor = getActivityColor(activity.type);
+                const timeAgo = getTimeAgo(new Date(activity.timestamp));
+                
+                notificationEl.innerHTML = `
+                    <div class="flex items-start">
+                        <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3"></div>
+                        <div>
+                            <p class="text-sm font-medium">${activity.description}</p>
+                            <p class="text-xs text-gray-500">${timeAgo}</p>
+                        </div>
+                    </div>
+                `;
+                
+                notificationList.appendChild(notificationEl);
+            });
+        }
+
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            
+            toastMessage.textContent = message;
+            toast.style.background = type === 'error' ? '#ef4444' : '#10b981';
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
         // Close modals when clicking outside
         document.addEventListener('click', function(event) {
             if (event.target.classList.contains('modal')) {
                 event.target.classList.remove('show');
             }
+            
+            const panel = document.getElementById('notification-panel');
+            const button = event.target.closest('button[onclick="toggleNotifications()"]');
+            
+            if (!panel.contains(event.target) && !button) {
+                panel.classList.add('hidden');
+            }
         });
 
         // Initialize on load
         document.addEventListener('DOMContentLoaded', function() {
-            // Check if user is logged in
-            const savedUser = localStorage.getItem('currentUser');
-            if (savedUser) {
-                currentUser = JSON.parse(savedUser);
-                showApp();
-            } else {
-                showLogin();
-            }
-            
+            updateDashboard();
+            initDashboardCharts();
             lucide.createIcons();
         });
     </script>
